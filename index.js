@@ -57,10 +57,80 @@ const solveBoard = function (board) {
             board[cell.x][cell.y] = 0;
           }
         }
-        return
+        return;
       }
     }
   }
-  printBoard(board)
-  return
+  printBoard(board);
+  return;
+};
+
+const valid = function (board, num, p) {
+  const boxI = p.x / 3;
+  const boxJ = p.x / 3;
+
+  //check row
+  for (const [i, _] of board.entries()) {
+    if (board[p.x][i] == num && p.y != i) {
+      return false;
+    }
+  }
+
+  //check col
+  for (const [i, _] of board.entries()) {
+    if (board[i][p.y] == num && p.x != i) {
+      return false;
+    }
+  }
+
+  //check box
+  for (const [i, _] of board.entries()) {
+    for (let j = boxJ; j < boxJ + 3; j++) {
+      if (board[i][j] == num && p.x != i && p.y != j) {
+        return false;
+      }
+    }
+  }
+  return true;
+};
+
+const checkEmpty = function (board) {
+  for (const [i, row] of board.entries()) {
+    for (const [j, val] of row.entries()) {
+      if (val === 0) {
+        return Pos(i, j), null;
+      }
+    }
+  }
+
+  return null, "no empty case found";
+};
+
+const isGameOver = function (board) {
+  for (const [_, line] of board.entries()) {
+    for (const [_, val] of line.entries()) {
+      if (val == 0) {
+        return false;
+      }
+    }
+  }
+  return true;
+};
+
+const printBoard = function (board) {
+  for (const [i, _] of board.entries()) {
+    if (i % 3 === 0 && i != 0) {
+      console.log("- - - - - - - - - - - - - - - -");
+    }
+    for(const [j, _] of board[i].entries()){
+      if(j % 3 === 0 && j != 0){
+        console.log(" | ")
+      }
+      // if( j ===8 ){
+
+      // }
+
+      // printf, printf
+    }
+  }
 };

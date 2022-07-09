@@ -1,5 +1,6 @@
 # Sudoku Solver
-This is a basic sudoku solver written in JavaScript using recursion and backtracking
+This is a basic sudoku solver written in JavaScript using recursion and backtracking.
+Credits to `github.com/imykie` for the Go - written algorithm.
 
 ## Example
 
